@@ -1,0 +1,1 @@
+require "admiral-meteor/tasks"
