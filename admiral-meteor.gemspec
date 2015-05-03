@@ -6,9 +6,9 @@ Gem::Specification.new do |spec|
   spec.name          = "admiral-meteor"
   spec.version       = '0.0.1'
   spec.authors       = ["Peter T. Brown"]
-  spec.email         = ["peter@flippyhead.com"]
-  spec.description   = %q{admiral thing}
-  spec.summary       = %q{admiral thing}
+  spec.email         = ["p@ptb.io "]
+  spec.description   = %q{Admiral module for building and deploying Meteor application to AWS OpsWorks.}
+  spec.summary       = %q{Admiral module for building and deploying Meteor application to AWS OpsWorks.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'git', '~> 1.2'
   spec.add_dependency 'json', '~> 1.8'
 
+  spec.add_dependency 'admiral', '~> 0.0.1'
 end
