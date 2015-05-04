@@ -13,8 +13,6 @@ module Admiral
 
       namespace :meteor
 
-      default_command :push
-
       class_option :name,
         desc: 'Name of build file. Set in env with ADMIRAL_DEPLOY_NAME',
         type: :string,
