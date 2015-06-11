@@ -68,9 +68,7 @@ A convenient approach for isolating configuration on a per project basis is to u
 
 ## Deploying Builds
 
-One of the easier ways to deploy to OpsWorks is by uploading archives to S3. Admiral takes this approach when you use the `push` command. Once a new build has been pushed, you can use the [Admiral for OpsWorks](https://github.com/flippyhead/admiral-cloudformation) command `deploy` to tell OpsWorks to extract the build, deploy it, and restart Meteor.
-
-The best approach is to include Admiral for Meteor in the Gemfile for your actual Meteor project.
+One of the easier ways to deploy to OpsWorks is by uploading archives to S3. Admiral takes this approach when you use the `push` command. Once a new build has been pushed, you can use the [Admiral for OpsWorks](https://github.com/flippyhead/admiral-opsworks) command `deploy` to tell OpsWorks to extract the build, deploy it, and restart Meteor.
 
 ## Meteor on OpsWorks
 
