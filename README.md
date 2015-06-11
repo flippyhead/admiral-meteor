@@ -71,3 +71,13 @@ A convenient approach for isolating configuration on a per project basis is to u
 One of the easier ways to deploy to OpsWorks is by uploading archives to S3. Admiral takes this approach when you use the `push` command. Once a new build has been pushed, you can use the [Admiral for OpsWorks](https://github.com/flippyhead/admiral-cloudformation) command `deploy` to tell OpsWorks to extract the build, deploy it, and restart Meteor.
 
 The best approach is to include Admiral for Meteor in the Gemfile for your actual Meteor project.
+
+## Meteor on OpsWorks
+
+To get NPM packages installed correctly on OpsWorks you can use [Chef deploy hooks](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-extend-hooks.html) to run commands after each deploy. For most projects you can simply create a `deploy` directory in the root of your Meteor project and add a `after_deploy.rb` file with this content:
+
+```ruby
+run "cd #{release_path}/programs/server && npm i"
+```
+
+This will correctly install any needed NPM modules required by standard Meteor builds.
