@@ -2,6 +2,10 @@
 
 An Admiral module for building and deploying Meteor applications to AWS OpsWorks EC2 instances.
 
+For additional modules, see the [Admiral base prjoect](https://github.com/flippyhead/admiral).
+
+Developed in Seattle at [Fetching](http://fetching.io).
+
 ## Installation
 
 Add this line to your application's Gemfile (recommended):

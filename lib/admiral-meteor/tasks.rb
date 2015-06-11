@@ -65,7 +65,7 @@ module Admiral
       end
 
 
-      desc "push", "Push a build to S3"
+      desc "push", "Build then push a build to S3"
 
       option :bucket,
         desc: 'S3 bucket name to hold builds. Set in env with ADMIRAL_DEPLOY_BUCKET.',
