@@ -1,6 +1,6 @@
 # Admiral for Meteor
 
-An Admiral module for building and deploying Meteor applications to AWS OpsWorks EC2 instances.
+Admiral for Meteor makes it easy to build and deploy Meteor applications.
 
 For additional modules, see the [Admiral base prjoect](https://github.com/flippyhead/admiral).
 
@@ -22,11 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-On your command line type:
+To see a list of available commands, on the command line enter:
 
     $ admiral meteor help
 
-To see a list of available commands. Make sure your bundle bin is in your PATH.
+Make sure your bundle bin is in your PATH.
 
 The following commands are available:
 
@@ -46,9 +46,14 @@ Options:
   [--architecture=ARCHITECTURE]  # The architecture to target for this build.
                                  # Default: os.linux.x86_64
 ```
+
+## Setup
+
+The recommended setup is to add the `admiral-meteor` gem to your Meteor project, then add the environment variable values specific to your application (see below).
+
 ## Environment Variables
 
-Admiral will look for certain configuration options in your environment variables. The following variables must be set to configure S3 deployments:
+Admiral will look for configuration options in your environment variables that either should not be committed to your source tree (like access credentials), are specific to development machines, or span environment configurations. The following variables must be set to configure S3 deployments:
 
 ```sh
 ADMIRAL_DEPLOY_BUCKET=your-app-builds   # an existing S3 bucket in which to store builds
@@ -57,18 +62,22 @@ ADMIRAL_DEPLOY_NAME=your-app            # the name of your app builds
 
 And just like the AWS client, your access keys and other settings must also be set:
 
-
 ```sh
 AWS_ACCESS_KEY_ID=ABC123ABC123ABC123
 AWS_SECRET_ACCESS_KEY=abc123xyz456abc123xyz456abc123xyz456
 AWS_REGION=us-west-2
 ```
 
-A convenient approach for isolating configuration on a per project basis is to use [rbenv](http://rbenv.org) and store these in a `.rbenv-vars` file in your project root.
+A convenient approach for isolating configuration on a per project basis is to use [rbenv](http://rbenv.org) and store these in a `.rbenv-vars` file in your repository root. Another common approach is to add these values via `export` to a shell script used to start your app.
 
 ## Deploying Builds
 
-One of the easier ways to deploy to OpsWorks is by uploading archives to S3. Admiral takes this approach when you use the `push` command. Once a new build has been pushed, you can use the [Admiral for OpsWorks](https://github.com/flippyhead/admiral-opsworks) command `deploy` to tell OpsWorks to extract the build, deploy it, and restart Meteor.
+One of the easier ways to deploy to OpsWorks is by uploading archives to S3. Admiral takes this approach when you use the `push` command. Once a new build has been pushed, you can use the [Admiral for OpsWorks](https://github.com/flippyhead/admiral-opsworks) command `deploy` to tell OpsWorks to extract the build, deploy it, and restart Meteor. So, a typical deploy would simply be:
+
+```sh
+admiral meteor push --tag v0.0.1
+admiral ow deploy myapp
+```
 
 ## Meteor on OpsWorks
 
@@ -79,3 +88,11 @@ run "cd #{release_path}/programs/server && npm i"
 ```
 
 This will correctly install any needed NPM modules required by standard Meteor builds.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
